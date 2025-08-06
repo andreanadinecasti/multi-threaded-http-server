@@ -1,34 +1,47 @@
-# Multi-threaded HTTP Server
+# 🧵 Multi-threaded HTTP Server
 
-## Overview
+This project is a simple yet powerful **multi-threaded HTTP/1.0 server** written in C. It supports `GET` and `PUT` requests using concurrent threads and a thread-safe queue. Each file is protected by a reader-writer locking mechanism to ensure thread-safe file access across multiple connections.
 
-This project involves the development of a multi-threaded HTTP server that integrates functionality from previous assignments, with a focus on concurrency, synchronization, and efficient request handling.
+> Developed as part of an operating systems/networking coursework assignment.
 
-The server can be executed using the following syntax:
+---
 
-```./httpserver [-t threads] <port>]```
+## 🚀 Features
 
-## Description
+- HTTP/1.0 support with basic `GET` and `PUT` functionality
+- Thread pool with configurable number of worker threads
+- Thread-safe request queue
+- Per-URI locking using custom reader-writer locks (`rwlock`)
+- Linearization and total ordering of requests
+- Detailed audit logging
+- POSIX-compliant and built for Unix-based systems
 
-The primary challenge of this assignment lay in understanding and applying the core concurrency logic required to build a functional multi-threaded server. Once the design concepts were clearly defined, the implementation became more straightforward.
+---
 
-Collaboration was essential throughout the development process—particularly during the brainstorming and planning phases. Team discussions helped refine the approach and led to more effective solutions.
+## 🛠️ Technologies & Concepts
 
-The main project file is **httpserver.c** with starter code and other supporting files given by Andrew Quinn, Mitchell Elliott, and Gurpreet Dhillon.
+This project leverages **Unix system programming** and **concurrency** techniques:
 
-## Key Concepts
+- 🧵 `pthreads` for multithreading
+- 🔄 Thread-safe queues for producer-consumer design
+- 🔐 Reader-writer locks for synchronized file access
+- 📄 System calls: `open`, `read`, `write`, `fstat`, `close`, `access`
+- 🌐 Networking: sockets, signals (`SIGPIPE`)
+- 🔒 Mutexes for protecting shared data structures
 
-- **Thread-safe queue management** and use of **read-write locks (rwlocks)**
-- **Linearization** of concurrent client requests
-- **Total ordering** of tasks to maintain consistency
-- Design and implementation of a **thread pool** for scalable request handling
+---
 
-## Learning Outcomes
+## 🖥️ System Requirements
 
-This project provided hands-on experience in building concurrent systems and deepened understanding of:
+- OS: **Ubuntu** or any Unix-like system (macOS, Linux, WSL on Windows)
+- Compiler: `gcc` or `clang` with POSIX support
+- Tools: `curl` for basic testing
 
-- Synchronization mechanisms
-- Parallel processing
-- Systems-level architecture and design
+---
 
+## 🧩 Compilation
 
+### Using `gcc` manually:
+
+```bash
+gcc -Wall -pthread -o httpserver httpserver.c asgn2_helper_funcs.c connection.c response.c request.c queue.c rwlock.c
