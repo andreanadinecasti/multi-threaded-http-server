@@ -6,7 +6,7 @@ This project involves the development of a multi-threaded HTTP server that integ
 
 The server can be executed using the following syntax:
 
-[./httpserver [-t threads] <port>]
+```./httpserver [-t threads] <port>]```
 
 ## Description
 
