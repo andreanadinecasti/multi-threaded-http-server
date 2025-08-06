@@ -14,6 +14,8 @@ The primary challenge of this assignment lay in understanding and applying the c
 
 Collaboration was essential throughout the development process—particularly during the brainstorming and planning phases. Team discussions helped refine the approach and led to more effective solutions.
 
+The main project file is **httpserver.c** with starter code and other supporting files given by Andrew Quinn, Mitchell Elliott, and Gurpreet Dhillon.
+
 ## Key Concepts
 
 - **Thread-safe queue management** and use of **read-write locks (rwlocks)**
